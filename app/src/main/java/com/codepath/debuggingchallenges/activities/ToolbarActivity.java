@@ -26,7 +26,7 @@ public class ToolbarActivity extends AppCompatActivity {
             setSupportActionBar(toolbar);
         }
 
-        getSupportActionBar().setTitle("Toolbar Activity");
+        getSupportActionBar().setTitle("My toolbar!");
 
 
         TextView tvDescription = (TextView) findViewById(R.id.tvDescription);

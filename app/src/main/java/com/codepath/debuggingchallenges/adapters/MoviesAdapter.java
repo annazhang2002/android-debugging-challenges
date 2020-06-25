@@ -5,6 +5,8 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +22,7 @@ import java.util.List;
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder> {
 
     private List<Movie> movies;
+    private Context context;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         // only needed because we need to set the background color
@@ -40,19 +43,20 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
         }
     }
 
-    public MoviesAdapter(List<Movie> movies) {
+    public MoviesAdapter(Context context, List<Movie> movies) {
+        this.context = context;
         this.movies = movies;
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return movies.size();
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
+        Log.d("MoviesAdapter", "onCreateViewHolder");
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
@@ -65,7 +69,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(MoviesAdapter.ViewHolder viewHolder, int position) {
-
+        Log.d("MoviesAdapter", "onBindViewHolder " + position);
         Movie movie = movies.get(position);
 
         // Populate the data into the template view using the data object
